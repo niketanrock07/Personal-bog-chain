@@ -1,0 +1,39 @@
+/**
+ *
+ *  Footer Stylings
+ *  footer.css
+ *
+ *  Created By Jayant Waldia
+ *
+ */
+
+.destination-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 10px 0px 10px;
+}
+
+.normal-footer {
+    background-color: #00B963;
+}
+
+.error-footer {
+    background-color: #D62F39;
+}
+
+.alert-footer {
+    background-color: #4583EC;
+}
+
+.destination-footer .destination {
+    text-align: center;
+    color: white;
+    font-family: 'FuturaLight', FuturaLight, sans-serif;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+}
+
+.destination-footer .bold {
+    font-family: 'Futura', FuturaLight, sans-serif;
+}

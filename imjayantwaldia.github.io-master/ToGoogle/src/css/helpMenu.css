@@ -1,0 +1,30 @@
+/**
+ *
+ *  Helper Menu Stylings
+ *  helpMenu.css
+ *
+ *  Created By Jayant Waldia
+ *
+ */
+
+.helpCollapse .nav-item {
+    overflow: scroll;
+    height: 500px;
+}
+
+.helpCollapse .navbar-nav .nav-item .helpTitle {
+    color: white;
+    margin: 20px 10px;
+}
+
+.helpCollapse .navbar-nav .nav-item .helpSubtitle {
+    margin-left: 10px;
+    color: white;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+.helpCollapse .navbar-nav .nav-item .helpPara {
+    margin: 10px;
+    color: rgb(242, 242, 242);
+}

@@ -1,0 +1,14 @@
+/**
+ *
+ *  Global Stylings
+ *  main.css
+ *
+ *  Created By Jayant Waldia
+ *
+ */
+
+/** Custom Font Face **/
+@font-face {
+    font-family: FuturaLight;
+    src: url(../assets/FuturaLight.otf);
+}

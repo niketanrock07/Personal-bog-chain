@@ -1,0 +1,19 @@
+/**
+ *
+ *  Direction Panel Stylings
+ *  directionPanel.css
+ *
+ *  Created By Jayant Waldia
+ *
+ */
+
+#panelCollapse {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#panelCollapse .adp {
+    height: 400px;
+    overflow: scroll;
+}

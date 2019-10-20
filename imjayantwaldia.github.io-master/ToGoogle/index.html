@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ToGoogle - Home of the Curious</title>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/png" href="./src/assets/favicon.ico"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootsrap CSS CDN -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+		<!-- Font Awesome Icons CDN -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<!-- Custom Stylings -->
+		<link rel="stylesheet" href="./src/css/main.css">
+		<link rel="stylesheet" href="./src/css/navbar.css">
+		<link rel="stylesheet" href="./src/css/helpMenu.css">
+		<link rel="stylesheet" href="./src/css/directionPanel.css">
+		<link rel="stylesheet" href="./src/css/map.css">
+		<link rel="stylesheet" href="./src/css/footer.css">
+	</head>
+
+	<body>
+
+		<!-- Navigation Bar -->
+		<nav class="navbar fixed-top navbar-light">
+
+			<div>
+				<!-- Menu Toggle Icon -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fas fa-bars"></i>
+				</button>
+				<!-- /Menu Toggle Icon -->
+
+				<a class="navbar-brand" href="#">ToGoogle</a>
+			</div>
+
+			<div>
+				<!-- Help Icon -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#helpCollapse" aria-controls="helpCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="far fa-question-circle" style="opacity: 0.8"></i>
+				</button>
+				<!-- /Help Icon -->
+
+				<!-- Compass Icon For Routing Menu -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#panelCollapse" aria-controls="panelCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="far fa-compass"></i>
+				</button>
+				<!-- /Compass Icon For Routing Menu -->
+			</div>
+
+			<!-- Collapsable Help Menu -->
+			<div class="collapse navbar-collapse justify-content-end helpCollapse" id="helpCollapse">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<h4 class="helpTitle">Something's Not Working?</h4>
+						<h6 class="helpSubtitle">Any Device or Browser</h6>
+						<p class="helpPara">Make sure that you allow use of location in the browser when clicking the <b>"get location"</b> button.</p>
+						<p class="helpPara"><i>If you accidently blocked location access then you can enable it <a href="https://www.wikihow.com/Enable-Location-Services-on-Google-Chrome">like this.</a></i></p>
+						<h6 class="helpSubtitle">Safari & MacOS Users</h6>
+						<p class="helpPara">For Safari user, please make sure that <b>"Location Service"</b> is enabled in your settings or else we cannot retrieve you location.</p>
+						<i class="helpPara">Here is a <a href="https://support.apple.com/en-gb/HT204690">link</a> on how to do so.</i>
+						<h6 class="helpSubtitle">Chrome Users</h6>
+						<p class="helpPara">If Chrome is taking time to fetch your location on a laptop or desktop device, this may be due to security restrictions or settings on your browser. In this case please test this on any other browser or even Chrome but on a different device.</p>
+					</li>
+				</ul>
+			</div>
+			<!-- /Collapsable Help Menu -->
+
+			<!-- Collapsable Routing Panel -->
+			<div class="collapse navbar-collapse justify-content-end directionPanel" id="panelCollapse">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<p style="margin-bottom: 0px; text-align: center;">Start your journey by clicking the <b>"Go"</b> button to see route info.</p>
+					</li>
+				</ul>
+			</div>
+			<!-- /Collapsable Routing Panel -->
+
+			<!-- Collapsable Menu -->
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+
+					<!-- Transit Dropdowns -->
+					<li class="nav-item">
+						<p class="nav-link">Transit Type</p>
+						<div class="form-group">
+							<!-- Transit Type Dropdown -->
+							<select onchange="displayExtraTransitFields();" class="form-control transit-dropdown" id="transit-dropdown">
+								<option value="Driving">Driving</option>
+								<option value="Bicycling">Bicycling</option>
+								<option value="Transit">Transit</option>
+								<option value="Walking">Walking</option>
+							</select>
+							<!-- /Transit Type Dropdown -->
+
+							<!-- Extra Transit Mode Dropdown -->
+							<select class="form-control hidden" id="transit-mode-dropdown">
+								<option value="empty">Select Mode</option>
+								<option value="Bus">Bus</option>
+								<option value="Rail">Tube</option>
+							</select>
+							<!-- /Extra Transit Mode Dropdown -->
+						</div>
+					</li>
+					<!-- /Transit Dropdowns -->
+
+					<!-- Travel Time Label -->
+					<li class="nav-item">
+						<p class="nav-link">Travel Time - Travel Distance</p>
+						<p class="rounding" id="travel-time">{} mins</p>
+						<p class="rounding" id="travel-distance">{} km</p>
+					</li>
+					<!-- /Travel Time Label -->
+
+					<!-- Departure Time Input & Arrival Label -->
+					<li class="nav-item destroy" id="departure-info">
+						<p class="nav-link">Departure Time - Arrival Time</p>
+						<p class="rounding" id="departure-time">Departure Time</p>
+						<p class="rounding" id="arrival-time">Arrival Time</p>
+					</li>
+					<!-- /Departure Time Input & Arrival Label -->
+
+				</ul>
+			</div>
+			<!-- /Collapsable Menu -->
+
+		</nav>
+		<!-- /Navigation Bar -->
+
+		<!-- Google's Map -->
+		<div id="map"></div>
+		<button id="go-btn" onclick="initialiseDistanceService()" class="btn btn-primary go-btn hidden">Go</button>
+		<button id="get-loc-btn" onclick="initialiseUserLocation()" class="btn btn-primary location-btn">Get Location</button>
+		<!-- /Google's Map -->
+
+		<!-- Destination Footer -->
+		<div id="footer" class="destination-footer alert-footer">
+			<p class="destination" id="footer-msg"><span class="bold">Alert:</span> Please "allow" use of location in browser and wait a few seconds as we get your location!</p>
+		</div>
+		<!-- /Destination Footer -->
+
+		<!-- ========== Javascript ========== -->
+		<!-- Custom Scripts -->
+		<script type="text/javascript" src="./src/js/map.js"></script>
+		<!-- Bootstrap -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		<!-- Google Maps API -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkYAbLL5XkPzs4P_6Drw1DKH65a2cP0-4&callback=initMap&libraries=places" async defer></script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+/**
+ *
+ *  Map Stylings
+ *  map.css
+ *
+ *  Created By Jayant Waldia
+ *
+ */
+
+#map {
+    margin-top: 56px;
+    height: 84.7%;
+    width: 100%;
+    position: absolute;
+}
+
+/** Media Query to prevent footer from overlapping on map on smaller screen widths **/
+@media only screen and (max-width: 604px) {
+    #map {
+        height: 82.1%;
+    }
+}
+
+/** Media Query to fix map height for devices like iPads **/
+@media only screen and (min-height: 1024px) {
+    #map {
+        height: 89.5%;
+    }
+}
+
+/** Media Query to fix map height for devices like iPad Pro's **/
+@media only screen and (min-height: 1366px) {
+    #map {
+        height: 92%;
+    }
+}
+
+/** Media Query to fix map height for devices in portrait mode **/
+@media only screen and (max-height: 415px) {
+    #map {
+        height: 71%;
+    }
+}
+
+/** Media Query to fix map height for iPhoneX **/
+@media only screen and (min-height: 800px) and (max-height: 811px) {
+    #map {
+        height: 86.5%;
+    }
+}
+
+/** Media Query to fix map height for iPhoneX **/
+@media only screen and (min-height: 812px) and (max-height: 813px) {
+    #map {
+        height: 84%;
+    }
+}
+
+.go-btn {
+    position: fixed;
+    bottom: 90px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    font-family: 'Futura', FuturaLight, sans-serif;
+    background: #4583EC;
+    opacity: 0.8;
+}
+
+.location-btn {
+    position: fixed;
+    bottom: 90px;
+    left: 20px;
+    height: 80px;
+    border-radius: 100px;
+    font-family: 'Futura', FuturaLight, sans-serif;
+    background: #4583EC;
+    opacity: 0.8;
+    padding: 0 20px;
+}
+
+.transit-dropdown {
+    float: left;
+    margin-right: 10px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.destroy {
+    display: none;
+}
